@@ -3,6 +3,7 @@
     package="com.e.c.a.h.drawoverotherapps">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <application
         android:allowBackup="true"
@@ -20,9 +21,18 @@
         </activity>
 
         <service
-            android:name=".DrawOverOtherAppsService"
+            android:name=".OSLevelUserInactivityService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <receiver
+            android:name=".OSLevelUserInactivityBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.e.c.a.h.drawoverotherapps.OSLevelUserInactivityService.LAUNCH_SERVICE"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
